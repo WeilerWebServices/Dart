@@ -1,0 +1,29 @@
+runtime: custom
+env: flex
+
+resources:
+  cpu: 1
+  memory_gb: 4
+  disk_size_gb: 50
+
+automatic_scaling:
+  min_num_instances: 12
+  max_num_instances: 40
+  cool_down_period_sec: 60
+  cpu_utilization:
+    target_utilization: 0.6
+
+env_variables:
+  REDIS_SERVER_URI: 'redis://10.0.0.4:6379'
+
+network:
+  name: vpc-dart-services
+
+skip_files:
+- ^\.git/.*$
+
+liveness_check:
+  path: /_ah/health
+
+readiness_check:
+  path: /_ah/ready

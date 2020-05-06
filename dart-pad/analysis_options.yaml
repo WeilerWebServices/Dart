@@ -1,0 +1,14 @@
+include: package:pedantic/analysis_options.1.9.0.yaml
+
+analyzer:
+  strong-mode:
+    implicit-casts: false
+  exclude:
+    - 'build/**'
+    - 'doc/api/**'
+    - 'last_prod/**'
+    - 'lib/bower/**'
+    - 'lib/services/_dartpadsupportservices.dart'
+    - 'lib/services/dartservices.dart'
+    - 'lib/src/protos/**'
+    - 'third_party/pkg/**'

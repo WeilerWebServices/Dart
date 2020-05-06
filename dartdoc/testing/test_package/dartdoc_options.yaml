@@ -1,0 +1,21 @@
+dartdoc:
+  categoryOrder: ["Excellent", "Unreal", "Real Libraries"]
+  categories:
+    Excellent:
+      markdown: "Excellent.md"
+      displayName: "Superb"
+    Unreal:
+      markdown: "Unreal.md"
+    Real Libraries:
+  tools:
+    drill:
+      command: ["bin/drill.dart"]
+      description: "Puts holes in things."
+    echo:
+      macos: ['/bin/sh', '-c', 'echo']
+      linux: ['/bin/sh', '-c', 'echo']
+      windows: ['C:\\Windows\\System32\\cmd.exe', '/c', 'echo']
+      description: 'Works on everything'
+  linkToSource:
+    root: '.'
+    uriTemplate: 'https://github.com/dart-lang/dartdoc/blob/master/testing/test_package/%f%#L%l%'

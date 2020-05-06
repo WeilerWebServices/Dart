@@ -1,0 +1,19 @@
+{{! Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+{{#tag_badges}}
+<div class="-pub-tag-badge">
+  <span class="tag-badge-main"{{#title}} title="{{title}}"{{/title}}>{{sdk}}</span>
+  {{#sub_tags}}
+  <span class="tag-badge-sub"{{#title}} title="{{title}}"{{/title}}>{{text}}</span>
+  {{/sub_tags}}
+</div>
+{{/tag_badges}}
+{{#tags}}
+  {{#has_href}}
+    <a class="package-tag{{#status}} {{status}}{{/status}}" href="{{{href}}}"{{#title}} title="{{title}}"{{/title}}>{{text}}</a>
+  {{/has_href}}
+  {{^has_href}}
+    <span class="package-tag{{#status}} {{status}}{{/status}}"{{#title}} title="{{title}}"{{/title}}>{{text}}</span>
+  {{/has_href}}
+{{/tags}}

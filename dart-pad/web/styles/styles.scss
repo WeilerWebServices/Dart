@@ -1,0 +1,586 @@
+@import 'package:dart_pad/scss/colors';
+@import 'package:dart_pad/scss/variables';
+@import 'package:dart_pad/scss/shared';
+
+@import 'layout';
+
+// Material Design Web theme colors. Must be imported before importing
+// material-components-web.scss.
+$mdc-theme-primary: #168AFD;
+$mdc-theme-secondary: #676767;
+$mdc-theme-background: $playground-background-color;
+$mdc-theme-surface: $playground-background-color;
+$mdc-theme-error: $dark-red;
+
+// Layout constants
+$doc-console-padding: 8px 24px 8px 24px;
+
+@import 'package:mdc_web/material-components-web';
+
+body {
+  background-color: $playground-background-color;
+  color: $playground-text-color;
+  font-family: $normal-font;
+  font-size: 14px;
+  @include layout-vertical;
+  @include layout-fit;
+}
+
+header {
+  background-color: $playground-header-background-color;
+  height: 48px;
+  padding-left: 24px;
+  @include layout-center;
+  z-index: 4;
+  user-select: none;
+
+  .header-title {
+    @include layout;
+    @include layout-center;
+    font-family: $google-sans;
+    font-weight: 400;
+    font-size: 16pt;
+    margin-right: 8px;
+
+    img.logo {
+      height: 24px;
+      width: 24px;
+      margin-right: 8px;
+    }
+  }
+
+  button.mdc-button {
+    @include mdc-button-ink-color(#f8f9fa);
+    text-transform: none !important;
+    letter-spacing: normal;
+  }
+
+  .header-gist-name {
+    @include layout-flex;
+    @include layout-horizontal;
+    @include layout-center-justified;
+    font-size: 14pt;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-left: 1em;
+    margin-right: 1em;
+    user-select: none;
+  }
+}
+
+section.main-section {
+  @include layout-flex;
+  @include layout;
+  @include layout-relative;
+
+  .panels {
+    @include layout;
+    @include layout-fit;
+  }
+}
+
+body>footer {
+  background-color: $playground-footer-background-color;
+  @include layout-horizontal;
+  @include layout-center;
+  padding: 8px 24px;
+  .flex {
+    @include layout-flex;
+  }
+
+  .footer-item {
+    margin-right: 10px;
+  }
+
+  * {
+    margin-right: 4px;
+  }
+
+  #dartpad-version {
+    margin-left: 12px;
+  }
+}
+
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  color: $playground-link-color;
+  fill: $playground-text-color;
+
+  &:visited {
+    color: $playground-link-color;
+    fill: $playground-link-color;
+  }
+
+  &:hover {
+    color: $playground-text-color;
+    fill: $playground-text-color;
+  }
+}
+
+// Splitter
+.gutter {
+  background-color: $dark-gutter-background-color;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.gutter.gutter-horizontal {
+  background-repeat: repeat-y;
+  cursor: col-resize;
+  height: 100%;
+}
+
+.gutter.gutter-vertical {
+  background-repeat: repeat-x;
+  cursor: row-resize;
+  width: 100%;
+}
+
+// Editor panel
+#editor-panel {
+  @include layout-vertical;
+  @include layout-relative;
+}
+
+#editor-host {
+  @include layout-vertical;
+  @include layout-flex;
+  margin: 8px 0 0 16px;
+  padding: 0 8px;
+
+  .CodeMirror {
+    @include layout-flex;
+    font-family: $editor-font;
+    font-size: $playground-editor-font-size;
+  }
+}
+
+.header {
+  @include layout-horizontal;
+  @include layout-justified;
+  @include layout-center;
+  padding: 4px;
+  height: 48px;
+
+}
+
+.button-group {
+  @include layout-horizontal;
+  @include layout-center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 8px 24px 0 0;
+  z-index: 5;
+}
+
+// Console
+
+#output-panel {
+  @include layout-flex;
+  @include layout-vertical;
+  @include layout-relative;
+
+  iframe {
+    @include layout-flex;
+    border: none;
+  }
+}
+
+#right-output-panel {
+  @include layout;
+  @include layout-vertical;
+  #right-output-panel-content {
+    @include layout-flex;
+  }
+  .view-label {
+    margin: 8px;
+  }
+}
+
+#right-doc-panel {
+  @include layout;
+  @include layout-vertical;
+  #right-doc-panel-content {
+    @include layout-flex;
+  }
+  .view-label {
+    margin: 8px;
+  }
+}
+
+.console {
+  @include layout-flex;
+  font-family: $editor-font;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 50px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  padding: $doc-console-padding;
+
+  .normal {
+    color: $dark-editor-text;
+  }
+
+  .error-output {
+    color: $dark-pink;
+  }
+}
+
+// Splash
+
+.splash {
+  background: $playground-background-color;
+  pointer-events: none;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  z-index: 1000;
+  opacity: 1;
+
+  transition: opacity .1s linear;
+  -webkit-transition: opacity .1s linear;
+}
+
+.splash.hide {
+  opacity: 0;
+}
+
+// Busy light
+
+.busylight {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin: 9px;
+
+  opacity: 0;
+  background-color: #fff;
+
+  -webkit-transition: all 100ms cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  -moz-transition: all 100ms cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  -o-transition: all 100ms cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  transition: all 100ms cubic-bezier(0.640, 0.125, 0.235, 0.885);
+
+  -webkit-transition-timing-function: cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  -moz-transition-timing-function: cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  -o-transition-timing-function: cubic-bezier(0.640, 0.125, 0.235, 0.885);
+  transition-timing-function: cubic-bezier(0.640, 0.125, 0.235, 0.885);
+}
+
+.busylight.on {
+  opacity: 0.6;
+}
+
+// Contenteditable elements
+[contenteditable]:focus {
+  outline: 0 solid transparent;
+}
+
+// Editor Tabs
+.editor-tab-host {
+  @include layout-vertical;
+}
+
+.border-top {
+  border-top: 6px solid $dark-gutter-background-color !important;
+}
+
+.editor-tabs {
+  @include layout-horizontal;
+  @include layout-center;
+  @include layout-justified;
+  padding-left: 8px;
+
+  button {
+    margin-right: 8px;
+  }
+  .tab-group {
+    @include layout-horizontal;
+    @include layout-center;
+  }
+}
+
+.editor-tab {
+  @include mdc-button-ink-color(#f8f9fa);
+  text-transform: none !important;
+  letter-spacing: normal;
+
+  color: $label-color;
+  border-top: 2px solid transparent;
+  padding: 8px 4px;
+
+  &.active {
+    color: $dark-blue;
+    font-weight: bold;
+  }
+}
+
+.mdc-tab__content {
+  text-transform: none !important;
+}
+
+.mdc-tab--active {
+  .mdc-tab__text-label {
+    font-weight: normal;
+  }
+}
+
+#editor-panel-close-button {
+  @include mdc-icon-button-size(16px, 16px, 8px);
+}
+
+#editor-panel-tab-host {
+  @include layout-flex;
+  @include layout-vertical;
+  .documentation {
+    @include layout-flex;
+  }
+}
+
+// documentation and parameter info styling
+.documentation {
+  padding: $doc-console-padding;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11pt;
+  line-height: 20px;
+  position: relative;
+  display: block;
+  overflow: auto;
+  overflow-wrap: break-word;
+  margin-top: 0;
+  margin-left: 0;
+
+  * {
+    color: $dark-editor-text;
+  }
+  h1 {
+    margin-top: 0;
+    font-size: 12pt;
+    color: $dark-blue;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  h2, strong {
+    font-weight: bold;
+    font-size: inherit;
+    color: #cdcdcd; /* little bit brigher than normal text*/
+  }
+  p {
+    margin-top: 0;
+  }
+  a {
+    color: #66d9ef;
+  }
+  a:hover {
+    color: #66d9ef;
+    text-decoration: underline;
+  }
+  a {
+    color: #66d9ef;
+  }
+  a:hover {
+    color: #66d9ef;
+    text-decoration: underline;
+  }
+  pre {
+    overflow-x: auto;
+    margin: 1em;
+  }
+  pre code {
+    white-space: inherit;
+    word-wrap: normal;
+  }
+  code, .parameter-hints code {
+    font-family: $editor-font;
+    font-size: 12pt;
+    color: $dark-blue;
+  }
+  code em {
+    color: $dark-orange;
+    font-style: normal;
+  }
+  .parameter-hints code {
+    color: $dark-orange;
+  }
+  code em {
+    color: $dark-orange;
+    font-style: normal;
+  }
+}
+
+// Code annotations
+
+.squiggle-error {
+  border-bottom: 2px solid $squiggle-error-color;
+}
+
+.squiggle-warning {
+  border-bottom: 2px solid $squiggle-warning-color;
+}
+
+.squiggle-info {
+  border-bottom: 2px solid $squiggle-info-color;
+}
+
+// Analysis flashes
+.flash {
+  background-color: $dark-flash-info-color;
+}
+
+// Issues
+#issues {
+  background-color: $dark-issues-background-color;
+  border: 8px solid $dark-issues-background-color;
+}
+
+.issue .issuelabel {
+  color: $dark-issue-label-color;
+}
+
+.issue .message {
+  color: $dark-issue-label-color;
+}
+
+#issues-toggle {
+  color: $mdc-theme-primary;
+}
+
+#issues-message {
+  font-family: $normal-font;
+  font-size: $playground-editor-font-size;
+  cursor: default;
+  margin-right: 0px;
+  margin-left: 12px;
+}
+
+.keyboard {
+  display: inline-block;
+  background: url('../../pictures/keyboard.svg') center no-repeat;
+  background-size: 100%;
+  width: 22px;
+  height: 18px;
+  margin-top: 1px;
+  cursor: pointer;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Unread console counter
+.Counter {
+  margin-left: 4px;
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: $dark-teal;
+  background-color: fade_out($dark-teal, 0.5);
+  border-radius: 20px;
+}
+
+#new-pad-dialog {
+  @include mdc-dialog-content-ink-color(white, 1.0);
+
+  .mdc-dialog__content {
+    @include layout-horizontal;
+    @include layout-start;
+    @include layout-around-justified;
+  }
+
+  .divider {
+    width: 1px;
+    height: 200px;
+    background-color: #2e3742;
+  }
+
+  .dart-container {
+    @include layout-vertical;
+    @include layout-center;
+
+    #new-pad-html-switch-container {
+      margin-top: 8px;
+    }
+  }
+
+  .select-project-button {
+    cursor: pointer;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    &:hover {
+      background-color: lighten($dark-code-background-color, 12%);
+    }
+    &.selected{
+      background-color: lighten($dark-code-background-color, 6%);
+    }
+    @include layout-vertical;
+    @include layout-center;
+    img {
+      width: auto;
+      max-height: 120px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .mdc-switch {
+    @include mdc-switch-toggled-on-color($button-color);
+    @include mdc-switch-toggled-off-color($secondary-color);
+  }
+
+  label[for=new-pad-html-switch] {
+    margin-left: 8px;
+  }
+}
+
+#samples-menu .mdc-list-item__graphic {
+    height: auto;
+    width: 20px;
+    margin-right: 14px;
+}
+
+// responsive layout
+@media screen and (max-width: 850px) {
+  #new-button {
+    display: none;
+  }
+
+  #format-button {
+    display: none;
+  }
+
+  #keyboard-button {
+    display: none;
+  }
+
+  #install-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .header-gist-name {
+    display: none !important;
+  }
+}
+
+// Misc
+.hide {
+  opacity: 0;
+}

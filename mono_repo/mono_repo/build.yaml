@@ -1,0 +1,18 @@
+# Read about `build.yaml` at https://pub.dev/packages/build_config
+# To update generated code, run `pub run build_runner build`
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          - lib/src/mono_config.dart
+          - lib/src/package_config.dart
+          - lib/src/pubspec.dart
+          - lib/src/raw_config.dart
+        options:
+          any_map: true
+          checked: true
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+          - prefer_expression_function_bodies

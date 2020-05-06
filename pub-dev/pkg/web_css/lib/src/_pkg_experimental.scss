@@ -1,0 +1,195 @@
+/* Copyright (c) 2020, the Dart project authors.  Please see the AUTHORS file
+   for details. All rights reserved. Use of this source code is governed by a
+   BSD-style license that can be found in the LICENSE file. */
+
+/* non-indented rule to restrict the content of the file to the experimental pages */
+body.experimental {
+
+.version-table {
+  width: 100%;
+  border-spacing: 0;
+
+  td, th {
+    border-bottom: 1px solid #c8c8ca;
+    padding: 4px 0px;
+    text-align: left;
+
+    &.version {
+    }
+
+    &.uploaded {
+      white-space: nowrap;
+      width: 100px;
+    }
+
+    &.documentation {
+      width: 60px; /* TODO: change to 40 after 'failed' text is removed. '*/
+      text-align: center;
+    }
+
+    &.archive {
+      width: 40px;
+      text-align: center;
+    }
+  }
+
+  > thead > tr > th {
+    font-size: 16px;
+    font-weight: 400;
+
+    &.version > span.label {
+      display: inline-block;
+      min-width: 100%;
+    }
+
+    &.documentation > span.label,
+    &.archive > span.label {
+      display: none;
+    }
+
+    @media (max-width: $device-mobile-max-width) {
+      &.uploaded > span.label{
+        display: none;
+      }
+    }
+  }
+
+  > tbody {
+    font-size: 14px;
+
+    .version {
+      font-size: 24px;
+
+      > a {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.changelog-entry {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid #c8c8ca;
+
+  .changelog-version {
+    border-bottom: none;
+    margin: 0;
+    width: 120px;
+  }
+
+  .changelog-content {
+    flex-grow: 1;
+    font-size: 14px;
+    margin: 4px 0 4px 16px;
+    width: 100%;
+  }
+}
+
+.learn-more-scoring {
+  border-bottom: 1px solid #c8c8ca;
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+  text-align: right;
+
+  > .learn-more-scoring-link {
+    font-weight: 400;
+  }
+}
+
+.dependency-table {
+  width: 100%;
+  border-spacing: 0;
+
+  td, th {
+    width: 25%;
+    text-align: left;
+    padding-right: 2px;
+    padding-top: 2px;
+  }
+
+  .main-header {
+    border-bottom: 1px solid #c8c8ca;
+  }
+
+  .sub-header {
+    font-weight: 500;
+    padding-top: 24px;
+  }
+
+  .hosted-pkg-link {
+    font-weight: 400;
+  }
+}
+
+.score-table {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin: 16px 0;
+
+  .score-items {
+    flex-grow: 1;
+    margin-right: 32px;
+
+    @media (min-width: $device-desktop-min-width) {
+      margin-right: 64px;
+    }
+  }
+
+  .score-percent-row {
+    display: flex;
+  }
+
+  .score-category-label {
+    flex-grow: 1;
+  }
+
+  .score-percent {
+    color: $color-link;
+    font-weight: 400;
+  }
+
+  .score-progress-row {
+    margin: 2px 0;
+  }
+
+  /* The gap between the categories. */
+  .score-progress-row + .score-percent-row {
+    margin-top: 32px;
+  }
+
+  .score-progress-frame {
+    background: $score-circle-outline;
+    height: 6px;
+  }
+
+  .score-progress {
+    background: $score-circle-stroke;
+    height: 6px;
+  }
+
+  .overall-score {
+    .score-circle {
+      width: 128px;
+      height: 128px;
+
+      @media (min-width: $device-desktop-min-width) {
+        width: 150px;
+        height: 150px;
+      }
+
+      .score-circle-label {
+        margin: 5%;
+      }
+
+      .score-circle-primary-label {
+        font-size: 48px;
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+/* non-indented rule to restrict the content of the file to the experimental pages */
+}

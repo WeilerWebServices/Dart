@@ -1,0 +1,28 @@
+# See https://github.com/dart-lang/mono_repo for details
+dart:
+- 2.6.0
+- dev
+
+stages:
+- smoke_test:
+  - group:
+    - dartfmt
+    - dartanalyzer: --fatal-infos --fatal-warnings .
+    dart: [dev]
+  - group:
+    - dartanalyzer: --fatal-warnings .
+    dart: [2.6.0]
+- build:
+  - command: pub run build_runner build test --delete-conflicting-outputs
+    os:
+      - linux
+      - windows
+- unit_test:
+  - command: pub run build_runner test --delete-conflicting-outputs -- -P presubmit
+    os:
+      - linux
+      - windows
+
+cache:
+  directories:
+  - .dart_tool/build

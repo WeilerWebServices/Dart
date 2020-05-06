@@ -1,0 +1,71 @@
+<div *ngFor="let configurationGroup of changes; let last=last">
+  <material-chips>
+    <template
+        ngFor
+        let-configuration
+        [ngForOf]="summaries(configurationGroup).keys">
+      <material-chip
+          tooltipTarget
+          #chip="tooltipTarget"
+          [removable]="false"
+          displayNameRenderer>
+        {{configuration}}
+      </material-chip>
+      <material-tooltip-card [for]="chip">
+        <div *deferredContent>
+              <span *ngFor="let singleConfiguration of summaries(configurationGroup)[configuration]">
+                {{singleConfiguration}}<br>
+              </span>
+        </div>
+      </material-tooltip-card>
+    </template>
+  </material-chips>
+  <div
+      *ngFor="let resultGroup of configurationGroup"
+      class="indent">
+        <span [class]="resultGroup.first.resultStyle">
+          {{resultGroup.first.changesText}}
+        </span><br>
+    <span *ngFor="let change of resultGroup.take(resultLimit)"
+          tooltipTarget #logs="tooltipTarget"
+          class="indent pointer">
+          {{approvalContent(change)}}{{change.name}}<br>
+      <material-tooltip-card
+          *ngIf="range != null"
+          [for]="logs"
+          [preferredPositions]="preferredTooltipPositions">
+        <div *deferredContent>
+          <h4>Logs</h4>
+          <dart-log
+              *ngFor="let configuration of change.configurations.configurations"
+              [configuration]="configuration"
+              [index]="range.end"
+              [test]="change.name">
+          </dart-log>
+        </div>
+      </material-tooltip-card>
+      <material-tooltip-card
+          *ngIf="builds != null"
+          [for]="logs"
+          [preferredPositions]="preferredTooltipPositions">
+        <div *deferredContent>
+          <h4>Logs</h4>
+          <div *ngFor="let configuration of change.configurations.configurations">
+            <a *ngIf="buildbucketID(change.patchset, configuration) != null"
+               target="_blank"
+               href="https://logs.chromium.org/logs/dart/buildbucket/cr-buildbucket.appspot.com/{{buildbucketID(change.patchset, configuration)}}/+/steps/test_results/0/logs/new_test_failures__logs_/0">
+              {{configuration}}
+            </a>
+          </div>
+        </div>
+      </material-tooltip-card>
+    </span>
+    <div
+        *ngIf="resultGroup.length > resultLimit"
+        (click)="resultLimit = resultGroup.length"
+        class="pointer">
+      &vellip; {{resultGroup.length - resultLimit}} more changed results
+    </div>
+  </div>
+  <hr *ngIf="!last">
+</div>

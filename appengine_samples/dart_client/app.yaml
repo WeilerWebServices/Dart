@@ -1,0 +1,27 @@
+# Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+# for details. All rights reserved. Use of this source code is governed by a
+# BSD-style license that can be found in the LICENSE file.
+
+runtime: custom
+env: flex
+service: default
+
+resources:
+  cpu: 2
+  memory_gb: 3
+
+manual_scaling:
+  instances: 1
+api_version: 1
+
+# This environment variable is used in developer mode by the dart application
+# to request assets from `pub serve`.
+#
+# boot2docker will setup a virtual host network, which allows the dart
+# application inside a docker container to communicate with the host.
+#
+# Before running the example you need to run
+# `pub serve --hostname 192.168.59.3 --port 7777 web` on the host. See
+# `README.md` for more information.
+env_variables:
+  DART_PUB_SERVE: 'http://192.168.59.3:7777'

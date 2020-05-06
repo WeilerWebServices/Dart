@@ -1,0 +1,11 @@
+name: futures_api
+description: A sample application that reads a file on dartlang using the Futures API, and prints the contents.
+homepage: https://dart.dev/tutorials/language/futures
+
+environment:
+  sdk: '>=2.3.0 <3.0.0'
+
+dev_dependencies:
+  build_runner: ^1.5.0
+  build_web_compilers: ^2.1.0
+  pedantic: ^1.7.0

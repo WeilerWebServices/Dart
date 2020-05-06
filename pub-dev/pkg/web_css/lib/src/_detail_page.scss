@@ -1,0 +1,178 @@
+/* Copyright (c) 2020, the Dart project authors.  Please see the AUTHORS file
+   for details. All rights reserved. Use of this source code is governed by a
+   BSD-style license that can be found in the LICENSE file. */
+
+/* non-indented rule to restrict the content of this block to the non-experimental pages */
+body.non-experimental {
+
+.detail-header {
+  margin: 30px 0 10px;
+
+  img.ff-badge {
+    float: right;
+    margin-right: 15px;
+    margin-top: 8px;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .metadata {
+    font-size: 14px;
+    color: #555;
+  }
+}
+
+.detail-body {
+  > .detail-body-main {
+    display: inline-block;
+    width: calc(100% - 300px);
+    vertical-align: top;
+
+    @media screen and (max-width: 920px) {
+      display: block;
+      width: 100%;
+      vertical-align: top;
+    }
+  }
+}
+
+/* Separated layout styles from internals, in order to mask half of it separately. */
+.detail-info-box {
+  display: inline-block;
+  margin-left: 20px;
+  width: 270px;
+
+  @media screen and (max-width: 920px) {
+    display: block;
+    width: 100%;
+    margin: 60px 0 0;
+  }
+}
+
+.detail-info-box {
+  vertical-align: top;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 270px;
+  flex: 0 0 270px;
+  padding: 10px 20px 22px 20px;
+  background: #F8F8F8;
+  border: 1px solid #DDD;
+  position: relative;
+  font-size: 14px;
+
+  > .title {
+    font-size: 14px;
+    margin: 12px 0 0 0;
+  }
+
+  > p {
+    margin: 0;
+  }
+
+  > .link {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+    line-height: 1.2em;
+  }
+}
+
+.detail-tabs-header {
+  margin: 10px 0 20px;
+  padding: 0;
+  border-bottom: 1px solid #f0f0f0;
+  list-style: none;
+
+  > .tab-button,
+  > .tab-link {
+    display: inline-block;
+    margin-right: 35px;
+    vertical-align: bottom;
+    transition: opacity 200ms; // allow tabs to fade-in, if -hidden is removed.
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.-hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  > .tab-button,
+  > .tab-link > a {
+    color: #666666;
+    padding: 10px 2px;
+    border-bottom: 4px solid;
+    border-bottom-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom-color: #dddddd;
+    }
+
+    > .score-box {
+      float: none;
+      margin: 0;
+      position: inherit;
+    }
+  }
+
+  > .tab-button {
+    &.-active {
+      color: black;
+      border-bottom-color: black;
+    }
+  }
+
+  > .tab-link > a {
+    display: block;
+    font-weight: 400;
+  }
+
+  /* Render admin tab with red. */
+  $admin-tab-color: #990000;
+
+  > .tab-button[data-name="-admin-tab-"],
+  > .tab-link[data-name="-admin-tab-"] > a {
+    color: $admin-tab-color;
+
+    &:hover {
+      border-bottom-color: $admin-tab-color;
+    }
+  }
+  > .tab-button.-active[data-name="-admin-tab-"] {
+    border-bottom-color: $admin-tab-color;
+  }
+}
+
+.detail-tabs-content {
+  > .tab-content {
+    display: none;
+
+    &.-active {
+      display: block;
+    }
+  }
+}
+
+#-pub-like-icon-button {
+  vertical-align: top;
+  margin-right: -5px;
+  margin-top: -15px;
+}
+
+.-pub-likes {
+ display: inline-block;
+  margin-right: 2px;
+}
+
+/* non-indented rule to restrict the content of this block to the non-experimental pages */
+}

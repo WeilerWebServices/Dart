@@ -1,0 +1,115 @@
+// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:dart_pad/scss/colors';
+
+// These variables must be set before importing material-components-web.scss.
+// Since `styles.scss` loads mdc_web these must be before `styles.scss` is
+// imported
+$mdc-theme-primary: #168AFD;
+$mdc-theme-secondary: #676767;
+$mdc-theme-background: $dark-code-background-color;
+$mdc-theme-surface: $dark-code-background-color;
+$mdc-theme-error: $dark-red;
+
+@import 'styles';
+
+body {
+  background-color: $dark-code-background-color;
+}
+
+a {
+  color: $dark-blue;
+}
+
+.gutter {
+  background-color: $dark-gutter-background-color;
+}
+
+#web-output {
+  background-color: $dark-code-background-color;
+}
+
+#console-output-footer {
+  background-color: $dark-code-background-color;
+}
+
+#console-output-container {
+  span.normal {
+    color: #dddddd;
+  }
+
+  .error-output {
+    color: $dark-pink;
+  }
+}
+
+// Helper class for using a border when collapsed
+.footer-top-border {
+  border-top: $border-width solid $dark-border-color;
+}
+
+#issues-message {
+  color: $dark-issue-label-color;
+}
+
+// Issues
+#issues {
+  background-color: $dark-issues-background-color;
+  border: 8px solid $dark-issues-background-color;
+}
+
+.issue .issuelabel {
+  color: $dark-issue-label-color;
+}
+
+.issue .message {
+  color: $dark-issue-label-color;
+}
+
+.CodeMirror-vscrollbar {
+  opacity: 0.2;
+}
+
+// Material Design
+.mdc-tab__text-label {
+  color: $dark-text-color !important;
+}
+.mdc-tab--active .mdc-tab__text-label {
+  color: #168AFD !important;
+}
+
+.message-container {
+  color: $dark-flash-text-color;
+}
+
+// Progress bar
+
+.mdc-linear-progress {
+  @include mdc-linear-progress-buffer-color($dark-code-background-color)
+}
+
+// Flashes
+
+.flash {
+  background-color: $dark-flash-info-color;
+}
+
+.flash-close {
+  .octicon {
+    color: $dark-flash-text-color;
+  }
+}
+
+.flash-success {
+  background-color: $dark-flash-success-color;
+}
+
+.flash-error {
+  background-color: $dark-flash-error-color;
+}
+
+.flash-warn {
+  background-color: $dark-flash-warning-color;
+}

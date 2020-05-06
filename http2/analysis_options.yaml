@@ -1,0 +1,23 @@
+include: package:pedantic/analysis_options.yaml
+analyzer:
+  strong-mode:
+    implicit-casts: false
+  errors:
+    unused_element: error
+    unused_import: error
+    unused_local_variable: error
+    dead_code: error
+linter:
+  rules:
+    - await_only_futures
+    - camel_case_types
+    - comment_references
+    - control_flow_in_finally
+    - directives_ordering
+    - empty_statements
+    - hash_and_equals
+    - implementation_imports
+    - non_constant_identifier_names
+    - only_throw_errors
+    - test_types_in_equals
+    - throw_in_finally

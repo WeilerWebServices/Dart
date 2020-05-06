@@ -1,0 +1,35 @@
+{
+  "coverage": {
+    "total": 5,
+    "documented": 1
+  },
+  "apiElements": [
+    {
+      "name": "pub_data_generator",
+      "kind": "library",
+      "href": "pub_data_generator/pub_data_generator-library.html"
+    },
+    {
+      "name": "PubDataGenerator",
+      "kind": "class",
+      "parent": "pub_data_generator",
+      "href": "pub_data_generator/PubDataGenerator-class.html",
+      "documentation": "Generates `pub-data.json` in the output directory, containing the extracted\n[PubDartdocData] instance."
+    },
+    {
+      "name": "fileName",
+      "kind": "top-level constant",
+      "parent": "pub_data_generator"
+    },
+    {
+      "name": "PubDataGenerator",
+      "kind": "constructor",
+      "parent": "pub_data_generator.PubDataGenerator"
+    },
+    {
+      "name": "generate",
+      "kind": "method",
+      "parent": "pub_data_generator.PubDataGenerator"
+    }
+  ]
+}

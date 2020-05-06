@@ -1,0 +1,21 @@
+{{! Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+
+<tr data-version="{{version}}">
+  <td class="version"><a href="{{& version_url}}">{{version}}</a></td>
+  <td class="uploaded">{{short_created}}</td>
+  <td class="documentation">
+    <a href="{{& dartdocs_url}}"
+       rel="nofollow"
+       title="Go to the documentation of {{package}} {{version}}">
+        <img src="{{& icons.documentation}}" alt="Go to the documentation of {{package}} {{version}}" />
+    </a>
+  </td>
+  <td class="archive">
+    <a href="{{& download_url}}"
+       title="Download {{package}} {{version}} archive">
+      <img src="{{& icons.download}}" alt="Download {{package}} {{version}} archive" />
+    </a>
+  </td>
+</tr>

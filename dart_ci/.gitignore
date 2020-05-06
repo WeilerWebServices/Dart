@@ -1,0 +1,14 @@
+**/.dart_tool/
+**/.firebase/
+**/.idea/
+**/.packages
+**/.pub/
+**/build/
+
+*.g.dart
+
+appengine/.packages
+functions/node_modules
+github-label-notifier/functions/node_modules
+results_feed/results_feed.iml
+results_feed/test/page_objects/*.g.dart

@@ -1,0 +1,79 @@
+{{! Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+
+<h2>Package ownership</h2>
+<div>
+  {{^pkg_has_publisher}}
+  <p>
+    You can transfer this package to a verified publisher if you are a member of the publisher.
+    Transferring the package removes the current uploaders, so that only the members of the publisher can upload new versions.
+  </p>
+  <p>
+    <strong>Upgrading to verified publishers is an irreversible operation.</strong>
+    Packages can be transferred between publishers, but they can't be converted back to legacy uploader ownership.
+  </p>
+  {{/pkg_has_publisher}}
+  {{#pkg_has_publisher}}
+  <p>
+    You can transfer your package to a <strong>different publisher</strong>
+    if you’re also a member of the publisher.
+  </p>
+  {{/pkg_has_publisher}}
+  {{#user_has_publisher}}
+  <div class="mdc-select" data-mdc-auto-init="MDCSelect">
+    <i class="mdc-select__dropdown-icon"></i>
+    <select id="-admin-set-publisher-input" class="mdc-select__native-control">
+      {{^pkg_has_publisher}}
+      <option value="" disabled="disabled" selected="selected"></option>
+      {{/pkg_has_publisher}}
+      {{#user_publishers}}
+      <option value="{{publisher_id}}" {{#selected}}selected="selected"{{/selected}}>{{publisher_id}}</option>
+      {{/user_publishers}}
+    </select>
+    <label class="mdc-floating-label">Select a publisher</label>
+    <div class="mdc-line-ripple"></div>
+  </div>
+  <p>
+    <button
+      id="-admin-set-publisher-button"
+      class="pub-button-danger mdc-button mdc-button--raised"
+      data-mdc-auto-init="MDCRipple">Transfer to publisher</button>
+  </p>
+  {{/user_has_publisher}}
+  {{^user_has_publisher}}
+  <p>
+    You have no verified publisher. Use the <a href="{{& create_publisher_url}}">create publisher</a> page to create one.
+  </p>
+  {{/user_has_publisher}}
+</div>
+
+<h2>Discontinued</h2>
+{{^is_discontinued}}
+<div>
+  <p>
+    If no one is maintaining this package, you can mark it as discontinued.
+    Discontinued packages remain available, but pub.dev doesn’t display them in search results.
+  </p>
+  <p>
+    <button
+      id="-admin-is-discontinued-toggle"
+      class="mdc-button mdc-button--raised"
+      data-mdc-auto-init="MDCRipple">Mark as "discontinued"</button>
+  </p>
+</div>
+{{/is_discontinued}}
+{{#is_discontinued}}
+<div>
+  <p>
+    If you want to continue developing this package, you can remove the discontinued status.
+    The package will be analyzed and included in search results.
+  </p>
+  <p>
+    <button
+      id="-admin-is-discontinued-toggle"
+      class="mdc-button mdc-button--raised"
+      data-mdc-auto-init="MDCRipple">Remove "discontinued"</button>
+  </p>
+</div>
+{{/is_discontinued}}

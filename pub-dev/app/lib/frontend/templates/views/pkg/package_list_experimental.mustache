@@ -1,0 +1,66 @@
+{{! Copyright (c) 2020, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+
+<div class="packages">
+  {{#packages}}
+  <div class="packages-item">
+    <div class="packages-header">
+      <h3 class="packages-title">
+        <a href="{{& url}}">{{name}}</a>
+      </h3>
+      {{#is_new}}
+      <div class="packages-recent">
+        <img class="packages-recent-icon" src="{{& static_assets.img__schedule-icon_svg}}" title="new package" />
+        Added <b>{{added_x_ago}}</b>
+      </div>
+      {{/is_new}}
+      <div class="packages-scores">
+        <div class="packages-score packages-score-like">
+          {{& like_score_html }}
+        </div>
+        <div class="packages-score packages-score-health">
+          {{& health_score_html }}
+        </div>
+        <div class="packages-score packages-score-popularity">
+          {{& popularity_score_html }}
+        </div>
+      </div>
+    </div>
+    <p class="packages-description">{{desc}}</p>
+    {{#is_external}}
+    <p class="packages-metadata">v {{version}} • {{external_type}}</p>
+    {{/is_external}}
+    {{^is_external}}
+    <p class="packages-metadata">
+      v <a href="{{& url}}">{{version}}</a>
+      {{#show_dev_version}} / <a href="{{& dev_version_url}}">{{dev_version}}</a>{{/show_dev_version}}
+      • Updated: <span>{{last_uploaded}}</span>
+      {{#publisher_id}}
+      <img class="packages-vp-icon"
+           src="{{& static_assets.img__verified-publisher-icon_svg}}"
+           title="Published by a pub.dev verified publisher" />
+      <a href="/publishers/{{publisher_id}}">{{publisher_id}}</a>
+      {{/publisher_id}}
+      {{#is_flutter_favorite}}
+        <span class="package-badge">
+          <img class="package-badge-icon" src="{{static_assets.img__flutter-logo-32x32_png}}" />
+          Flutter Favorite
+        </span>
+      {{/is_flutter_favorite}}
+    </p>
+    {{/is_external}}
+    <div>{{& tags_html}}</div>
+    {{#has_api_pages}}
+    <div class="packages-api">
+      API results
+      <ul>
+        {{#api_pages}}
+        <li><a href="{{& href}}">{{title}}</a></li>
+        {{/api_pages}}
+      </ul>
+    </div>
+    {{/has_api_pages}}
+  </div>
+  {{/packages}}
+</div>

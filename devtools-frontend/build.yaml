@@ -1,0 +1,13 @@
+targets:
+  $default:
+    sources:
+      - front_end/dart_tests/**
+      - front_end/sdk/**
+      - scripts/**
+      - services/**
+      - test/**
+      - lib/**
+    builders:
+      build_web_compilers|entrypoint:
+        generate_for:
+          include: ["web/**.dart", "lib/context_for_evaluation.dart", "test/**_test.dart"]

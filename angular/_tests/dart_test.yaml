@@ -1,0 +1,7 @@
+# Include common configuration.
+include: ../dev/tool/test/dart_test_repo.yaml
+
+# This repository has both web and VM tests.
+platforms:
+  - chrome
+  - vm

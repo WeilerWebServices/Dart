@@ -1,0 +1,80 @@
+<div *ngIf="reviewInfo != null">
+  <h2>
+    <a href="http://dart-review.googlesource.com/c/sdk/+/{{review}}/{{patchset}}"
+       target="_blank">{{reviewInfo.title}}</a>
+  </h2>
+  <h2 *ngIf="waitingForData">Fetching results&hellip;</h2>
+  <h2 *ngIf="noChanges">No changed test results</h2>
+  <results-panel *ngIf="!approving"
+      [changes]="changeGroup.changes"
+      [builds]="builds"
+      [builders]="builders">
+  </results-panel>
+  <results-selector-panel *ngIf="approving"
+      [changes]="changeGroup.changes"
+      [builds]="builds"
+      [builders]="builders"
+      [selected]="selected"
+      failuresOnly>
+  </results-selector-panel>
+  <div *ngFor="let c of changeGroup.comments"
+      class="comment">
+    <b>{{c.approvedText()}}</b>
+    <span class="nowrap">{{formattedDate(c.created)}}</span>
+    {{formattedEmail(c.author)}}<br>
+    <simple-html style="padding-left: 32px" [contents]="c.commentHtml">
+    </simple-html>
+  </div>
+  <div *ngIf="approving">
+    Comment: Use GitHub short links like #456 (dart-lang sdk issue 456),
+    flutter/engine#93, or google/quiver-dart#45. You can also paste
+    URLs of GitHub issues in dart-lang, flutter, or google directly.
+    <br>
+    <material-input
+        multiline
+        style="width: 80%"
+        label="Comment"
+        required
+        rows="3"
+        [(ngModel)]="commentText"></material-input>
+  </div>
+  <div>
+    <material-button
+        *ngIf="approveEnabled && !approving"
+        raised
+        (click)="approving = true">
+      Approve/Comment ...
+    </material-button>
+    <material-button
+        *ngIf="approving"
+        raised
+        (click)="approving = false">
+      Cancel
+    </material-button>
+    <material-button
+        *ngIf="approving"
+        raised
+        (click)="approve(false)">
+      Revoke Selected Approvals
+    </material-button>
+    <material-button
+        *ngIf="approving"
+        raised
+        (click)="approve(null)">
+      Comment without Approving
+    </material-button>
+    <material-button
+        *ngIf="approving"
+        raised
+        (click)="approve(true)">
+      Approve
+    </material-button>
+    <material-button
+        *ngIf="approveEnabled && !approving"
+        raised
+        (click)="openNewGithubIssue()">
+      Create GitHub issue...
+    </material-button>
+  </div>
+
+</div>

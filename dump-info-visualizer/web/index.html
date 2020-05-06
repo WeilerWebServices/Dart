@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+for details. All rights reserved. Use of this source code is governed by a
+BSD-style license that can be found in the LICENSE file.
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dump Info Visualizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="viewer.css">
+
+    <link rel="import" href="packages/core_elements/core_toolbar.html">
+    <link rel="import" href="packages/paper_elements/paper_tab.html">
+    <link rel="import" href="packages/paper_elements/paper_tabs.html">
+    <link rel="import" href="packages/paper_elements/roboto.html">
+
+    <link rel="import" href="packages/dump_viz/src/dependency_view.html">
+    <link rel="import" href="packages/dump_viz/src/diff_view.html">
+    <link rel="import" href="packages/dump_viz/src/drag_drop_view.html">
+    <link rel="import" href="packages/dump_viz/src/hierarchy_view.html">
+    <link rel="import" href="packages/dump_viz/src/program_info_view.html">
+  </head>
+  <body unresolved>
+    <core-toolbar>
+      <paper-tabs selected="-10">
+        <paper-tab id="info-tab" slide="info" offset="0">
+          PROGRAM INFO
+        </paper-tab>
+        <paper-tab id="hier-tab" slide="hier" offset="1">
+          HIERARCHY
+        </paper-tab>
+        <paper-tab id="dep-tab" slide="dep" offset="2">
+          DEPENDENCIES
+        </paper-tab>
+        <paper-tab id="diff-tab" slide="diff" offset="3">
+          DIFF
+        </paper-tab>
+        <!--
+        TODO(tyoverby): Enable this when graphviz graphs are added.
+        <paper-tab id="graph-tab" slide="graph" offset="3">
+        GRAPH
+        </paper-tab>
+        -->
+      </paper-tabs>
+    </core-toolbar>
+    <div id="dummy-toolbar"></div>
+    <div class="slidecontainer">
+
+      <!-- Whole Program Information -->
+      <div id="info-slide" class="slide">
+        <program-info-view></program-info-view>
+      </div>
+
+      <!-- Hierarchy View -->
+      <div id="hier-slide" class="slide">
+        <hierarchy-view></hierarchy-view>
+      </div>
+
+      <!-- Dependency Viewer -->
+      <div id="dep-slide" class="slide">
+        <dependency-view></dependency-view>
+      </div>
+
+      <div id="diff-slide" class="slide">
+        <diff-view></diff-view>
+      </div>
+
+
+      <!-- File Loading Slide
+        This slide can not be returned to-->
+      <div id="load-slide" class="slide">
+        <drag-drop-view></drag-drop-view>
+        <button id="useLast" disabled>Use cache</button>
+        <button id="clearCache" disabled>Clear cache</button>
+      </div>
+
+    </div>
+
+    <!-- entry point dart file -->
+    <script type="application/dart" src="viewer.dart"></script>
+  </body>
+</html>

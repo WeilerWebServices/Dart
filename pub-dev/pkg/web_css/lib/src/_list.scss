@@ -1,0 +1,229 @@
+/* Copyright (c) 2020, the Dart project authors.  Please see the AUTHORS file
+   for details. All rights reserved. Use of this source code is governed by a
+   BSD-style license that can be found in the LICENSE file. */
+
+/* non-indented rule to restrict the content of this block to the non-experimental pages */
+body.non-experimental {
+
+.listing-sort-header {
+  float: right;
+  margin: 0 0.5em 0.5em 0.5em;
+  text-align: right;
+}
+
+.listing-page-title {
+  color: gray;
+  font-weight: 500;
+}
+
+.package-count {
+  font-size: 16px;
+  color: #333;
+  margin: 24px 6px 10px;
+}
+
+/******************************************************
+  other listing page
+******************************************************/
+.package-list, .publisher-list {
+  clear: both;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.publisher-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    /* Ensures 3 items per row */
+    flex: 1 1 26%;
+  }
+}
+
+/******************************************************
+  package listing page
+******************************************************/
+.list-item {
+  padding: 7px 8px;
+
+  &:hover {
+    background: #fafafa;
+  }
+
+  &.-full {
+    min-height: 7em;
+  }
+
+  &.-compact {
+    min-height: 4em;
+  }
+
+  > .title {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+
+    .-pub-ff-img {
+      margin-left: 5px;
+      vertical-align: text-top;
+    }
+  }
+
+  > .description {
+    font-size: 14px;
+    line-height: 1.3;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+  }
+
+  > .metadata {
+    font-size: 12px;
+    margin: 4px 0;
+  }
+
+  &.-simple > .metadata > .package-tag:first-of-type {
+    margin-left: 0;
+  }
+
+  > .api_pages {
+    font-size: 12px;
+  }
+}
+
+.-pub-mini-list-publisher-badge {
+  font-size: 12px;
+  float: right;
+  display: block;
+  margin: 4px 0px 4px 4px;
+  max-width: 32ex;
+
+  > img {
+    vertical-align: top;
+  }
+}
+
+.score-box {
+  float: right;
+  margin: 8px;
+  position: relative;
+  text-align: center;
+  width: 36px;
+
+  > .number {
+    display: block;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    margin: 0 auto;
+    font-weight: 700;
+
+    &.-solid {
+      background: #0175C2;
+    }
+    &.-good {
+      background: #00c4b3;
+    }
+    &.-rotten {
+      background: #bb2400;
+    }
+    &.-missing {
+      background: #ccc;
+    }
+  }
+
+  > .new {
+    position: absolute;
+    top: -30%;
+    right: -25%;
+    background: #646464;
+    border-radius: 3px;
+    color: #ffeb3b;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0px 2px;
+    transition: background 0.2s ease-out;
+
+    &:hover {
+      background: #424242;
+    }
+  }
+}
+
+.list-filters {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  flex-flow: row wrap;
+  margin: 16px 0;
+  border: 1px solid $color-searchbar-dark-border;
+  border-radius: 3px;
+
+  > .filter {
+    background: transparent;
+    border-right: 1px solid $color-searchbar-dark-border;
+    color: $color-searchbar-dark-input-fg;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 24px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    &.-active {
+      color: $color-searchbar-dark-input-fg;
+      background: $color-searchbar-dark-link;
+    }
+  }
+
+  // Overrides for secondary tabs.
+  .search-bar-options & {
+    margin-top: 0px;
+  }
+}
+
+/* non-indented rule to restrict the content of this block to the non-experimental pages */
+}
+
+.pagination {
+  margin: 20px auto;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+
+  > li {
+    display: inline-block;
+    text-transform: uppercase;
+    color: #0175C2;
+    background: #f3f3f3;
+    font-size: 14px;
+    border-radius: 3px;
+    margin-top: 40px;
+
+    &.-disabled {
+      pointer-events: none;
+      color: #aaa;
+    }
+
+    &.-active {
+      pointer-events: none;
+      color: #fff;
+      background: #0175C2;
+    }
+
+    > a {
+      display: inline-block;
+      padding: 10px 16px;
+      color: inherit;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{{! Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+
+<form class="search-bar banner-item" action="{{& search_form_url}}">
+  <input class="input" name="q" placeholder="{{search_query_placeholder}}" autocomplete="on"{{#autofocus}} autofocus="autofocus"{{/autofocus}}{{#search_query_html}} value="{{& search_query_html}}"{{/search_query_html}}/>
+  <button class="icon"></button>
+  {{#show_search_filters_btn}}
+  <div class="search-filters-btn-wrapper">
+    <img class="search-filters-btn search-filters-btn-inactive" src="{{& static_assets.img__search-filters-inactive_svg}}" />
+    <img class="search-filters-btn search-filters-btn-active" src="{{& static_assets.img__search-filters-active_svg}}" />
+  </div>
+  {{/show_search_filters_btn}}
+  {{#search_sort_param}}<input type="hidden" name="sort" value="{{search_sort_param}}"/>{{/search_sort_param}}
+  <input id="search-legacy-field" type="hidden" name="legacy" value="1"{{^legacy_search_enabled}} disabled="disabled"{{/legacy_search_enabled}} />
+  {{#hidden_inputs}}
+  <input type="hidden" name="{{name}}" value="{{value}}" />
+  {{/hidden_inputs}}
+</form>
+{{#show_details}}
+<div class="search-bar-details banner-item">
+  {{& sdk_tabs_html }}
+
+  {{#show_options}}
+  <div class="search-bar-options">
+    {{#show_legacy_checkbox}}
+    <input id="search-legacy-checkbox" type="checkbox" name="legacy" valye="1" {{#legacy_search_enabled}} checked="checked"{{/legacy_search_enabled}} />
+    <label for="search-legacy-checkbox">Include Dart 1.x results</label>
+    {{/show_legacy_checkbox}}
+    {{& secondary_tabs_html }}
+  </div>
+  {{/show_options}}
+</div>
+{{/show_details}}

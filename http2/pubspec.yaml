@@ -1,0 +1,12 @@
+name: http2
+version: 1.0.1-dev
+description: A HTTP/2 implementation in Dart.
+homepage: https://github.com/dart-lang/http2
+
+environment:
+  sdk: '>=2.5.0 <3.0.0'
+
+dev_dependencies:
+  mockito: ^4.0.0
+  test: ^1.2.0
+  pedantic: ^1.0.0

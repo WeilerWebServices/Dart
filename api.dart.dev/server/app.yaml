@@ -1,0 +1,43 @@
+# Copyright (c) 2012, the Dart project authors.  Please see the AUTHORS file
+# for details. All rights reserved. Use of this source code is governed by a
+# BSD-style license that can be found in the LICENSE file.
+
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+# It seems considerably cleaner to write (stable|dev|be) instead of .*, but it
+# doesn't work for some reason.
+
+- url: /apidocs/channels/.*/dartdoc-viewer/home
+  script: scripts.redirector.application
+
+- url: /apidocs/channels/.*/dartdoc-viewer/.*static
+  script: scripts.redirector.application
+
+- url: /apidocs/channels/.*/dartdoc-viewer/.*packages
+  script: scripts.redirector.application
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+
+- url: /robots.txt
+  static_files: robots.txt
+  upload: static/robots.txt
+
+- url: /google76d23419c98fdd46.html
+  static_files: static/google76d23419c98fdd46.html
+  upload: static/google76d23419c98fdd46.html
+
+- url: /google2ed1af765c529f57.html
+  static_files: static/google2ed1af765c529f57.html
+  upload: static/google2ed1af765c529f57.html
+
+- url: /apidocs/channels/.*/docs/.*
+  script: scripts.redirector.application
+
+- url: /.*
+  script: scripts.redirector.application
+  secure: always

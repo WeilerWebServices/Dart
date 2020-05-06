@@ -1,0 +1,8 @@
+packages
+out
+pubspec.lock
+.project
+tags
+.DS_Store
+*.pyc
+.buildlog

@@ -1,0 +1,319 @@
+/* Copyright (c) 2020, the Dart project authors.  Please see the AUTHORS file
+   for details. All rights reserved. Use of this source code is governed by a
+   BSD-style license that can be found in the LICENSE file. */
+
+/******************************************************
+  site base
+******************************************************/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
+body, input, button {
+  font-family: $font-family-roboto;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.experimental {
+  color: #4a4a4a;
+  font-size: 14px;
+  font-weight: 300;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-google-sans;
+    font-weight: 400;
+  }
+
+  h1 { font-size: 36px; }
+  h2 { font-size: 24px; }
+  h3 { font-size: 16px; }
+  h4 { font-size: 16px; }
+  h5 { font-size: 14px; }
+  h6 { font-size: 14px; }
+}
+
+img {
+  max-width: 100%;
+}
+
+// Material Design theme customizations
+:root {
+  --mdc-theme-primary: #0175C2;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+
+  &.pub-button-danger {
+    // TODO: figure out why we can't use $color-input-danger here
+    --mdc-theme-primary: #ff4242;
+  }
+
+  &.pub-button-cancel {
+    --mdc-theme-primary: #f0f0f0;
+    --mdc-theme-on-primary: #000000;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $color-link;
+  cursor: pointer;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  body.non-experimental & {
+    font-weight: 500;
+  }
+}
+
+main {
+  min-height: calc(100vh - 360px); // top nav + search banner + footer margin + footer padding
+
+  body.page-standalone.non-experimental & {
+    max-width: 800px;
+  }
+}
+
+/* Useful for synchronizing the alignment of different page blocks. */
+.container,
+.-wide-header-detail-page .detail-container {
+  max-width: $site-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* TODO: remove this block after migrating to the new UI */
+code {
+  background: #f8f8f8;
+  border: 1px solid #eee;
+  font-family: $font-family-roboto-mono;
+  font-size: 85%;
+  padding: 2px;
+}
+
+/* TODO: remove this block after migrating to the new UI */
+pre > code {
+  display: block;
+  padding: 0.5em;
+  overflow-x: auto;
+
+  body.non-experimental & {
+    overflow-x: auto;
+  }
+}
+
+/* non-indented rule to restrict the content of this block to the experimental pages */
+body.experimental {
+
+.standalone-side-image-block {
+  display: none;
+  float: right;
+  max-width: 400px;
+}
+
+.standalone-content {
+  max-width: 700px;
+  margin: 0px auto;
+}
+
+@media (min-width: 1000px) {
+  .standalone-side-image-block {
+    display: block;
+  }
+  .standalone-wrapper.-has-side-image {
+    .standalone-content {
+      margin: 0px;
+    }
+  }
+}
+
+.markdown-body code,
+code {
+  background: #f5f5f7;
+  border: none;
+  border-radius: 4px;
+  font-family: $font-family-roboto-mono;
+  padding: 2px 4px;
+}
+
+.markdown-body pre,
+pre {
+  background: #f5f5f7;
+  padding: 30px;
+  overflow-x: auto;
+
+  > code {
+    padding: 0 !important;
+    border-radius: 0;
+    display: block;
+  }
+}
+
+/* non-indented rule to restrict the content of this block to the experimental pages */
+}
+
+._banner-bg {
+  background: $color-searchbar-dark-bg;
+  background-image: url('/static/img/background-pattern-darkblue.jpg?hash=tqigd6sddnrgq97c7crv8d2l6agjtrob');
+  background-size: cover;
+  color: $color-searchbar-dark-fg;
+  padding: 10px 0px;
+
+  a {
+    color: $color-searchbar-dark-link;
+  }
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+._visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  &:active,
+  &:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+}
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+.-pub-publisher-shield {
+  vertical-align: top;
+  margin-right: 2px;
+}
+
+.-pub-publisher {
+  display: inline-block;
+}
+
+.-pub-like-button {
+  --mdc-theme-primary: #f8f8f8;
+  --mdc-theme-on-primary: #000000;
+
+  body.non-experimental & {
+    float: right;
+    width: 100px;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.pub-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  >.pub-modal-panel {
+    background: white;
+    border: 1px solid #666;
+    border-radius: 24px;
+    padding: 24px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 600px;
+
+    >.pub-modal-content {
+      margin-bottom: 24px;
+    }
+
+    >.pub-modal-buttons {
+      text-align: center;
+
+      .pub-button {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+/******************************************************
+  spinner
+******************************************************/
+
+.spinner-frame {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+
+  background: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid $color-input-primary;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 3s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hash-link {
+  color: #ccc;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out 0.1s;
+
+  .hash-header:hover & {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.foldable {
+  .foldable-content {
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+  }
+}

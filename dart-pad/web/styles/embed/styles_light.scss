@@ -1,0 +1,94 @@
+// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+@import 'package:dart_pad/scss/colors';
+@import 'package:dart_pad/scss/variables';
+
+// These variables must be set before importing material-components-web.scss.
+// Since `styles.scss` loads mdc_web these must be before `styles.scss` is
+// imported
+$mdc-theme-primary: #168AFD;
+$mdc-theme-secondary: #676767;
+$mdc-theme-background: $light-code-background-color;
+$mdc-theme-surface: $light-code-background-color;
+$mdc-theme-error: $light-red;
+
+@import 'styles';
+
+a {
+  color: $button-color;
+}
+
+.gutter {
+  background-color: $light-gutter-background-color;
+}
+
+#web-output {
+  background-color: $light-code-background-color;
+}
+
+#console-output-footer {
+  background-color: $light-code-background-color;
+}
+
+// Helper class for using a border when collapsed
+.footer-top-border {
+  border-top: $border-width solid $light-border-color;
+}
+
+#issues-message {
+  color: $light-label-color;
+}
+
+// Issues
+#issues {
+  background-color: $light-secondary-background-color;
+  border: 8px solid $light-secondary-background-color;
+}
+
+.issue .issuelabel {
+  color: $light-label-color;
+}
+
+.issue .message {
+  color: $light-label-color;
+}
+
+#navbar {
+  background-color: $light-secondary-background-color;
+}
+
+// Progress bar
+
+.mdc-linear-progress {
+  @include mdc-linear-progress-buffer-color($light-code-background-color)
+}
+
+// Flashes
+
+.message-container {
+  color: $light-issue-label-color;
+}
+
+.flash {
+  background-color: $light-flash-info-color;
+}
+
+.flash-close {
+  .octicon {
+    color: $light-text-color;
+  }
+}
+
+.flash-success {
+  background-color: $light-flash-success-color;
+}
+
+.flash-error {
+  background-color: $light-flash-error-color;
+}
+
+.flash-warn {
+  background-color: $light-flash-warning-color;
+}

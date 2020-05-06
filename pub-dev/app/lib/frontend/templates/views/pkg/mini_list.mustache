@@ -1,0 +1,26 @@
+{{! Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+
+<ul class="package-list">
+  {{#packages}}
+    <li class="list-item -simple">
+      <h3 class="title"><a href="{{& package_url}}">{{name}}</a>
+        {{#publisher_id}}
+          <a
+            href="/publishers/{{publisher_id}}"
+            class="-pub-mini-list-publisher-badge">
+            <img 
+              src="{{{static_assets.img__verified-publisher-blue_svg}}}"
+              title="Published by a pub.dev verified publisher"
+              height="16"
+              width="16" />{{publisher_id}}</a>
+        {{/publisher_id}}
+      </h3>
+      <p class="metadata">
+        {{& tags_html}}
+      </p>
+      <p class="description">{{ellipsized_description}}</p>
+    </li>
+  {{/packages}}
+</ul>

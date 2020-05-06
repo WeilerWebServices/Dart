@@ -1,0 +1,54 @@
+Push a change to this file to trigger a build of our bots. For example,
+change the haiku below.
+
+A trigger haiku
+Will cause the bots to re-run
+To test all your stuff
+
+Danish summer day
+The rain comes down in torrents
+WTF Denmark?
+
+Danish winter day
+Raindrops roll down my window
+Same as in summer
+
+Haiku Haiku ku
+Hai Hai Haiku ku ku hai
+Hai ai ai ku ai
+
+Pub borked on Windows
+Trying to get some data
+Wish me luck, homie
+
+Why won't the bots run?
+Nothing seems to trigger them
+Bet this'll do it
+
+Status why you broke?
+You make the bears very sad
+Cry, little bear, cry
+
+This time I'll fix it
+I'll put it on my task list
+"Bot not triggering"
+
+Now we're running from
+Dart dot googlesource dot com
+So land this patch there
+
+The buildbot triggers
+Come from github dot com repos
+So land stuff on both
+
+Now the trigger should
+Come from dart dot googlesource
+This lands only there
+
+Trigger still broken
+Land Gerrit CL on gob
+Landed hash is new!
+
+Summer in Denmark
+Last time that Dart was triggered
+Long ago forgotten

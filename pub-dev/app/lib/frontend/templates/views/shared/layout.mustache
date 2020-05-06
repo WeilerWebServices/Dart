@@ -1,0 +1,108 @@
+{{! Copyright (c) 2017, the Dart project authors.  Please see the AUTHORS file
+    for details. All rights reserved. Use of this source code is governed by a
+    BSD-style license that can be found in the LICENSE file. }}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-26406144-13"></script>
+  <script src="{{{static_assets.js__gtag_js}}}"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{#no_index}}
+  <meta name="robots" content="noindex" />
+  {{/no_index}}
+
+  <!-- Twitter tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:description" content="{{& pageDescription}}" />
+  <meta name="twitter:image" content="{{& pub_site_root}}{{& static_assets.img__pub-dev-icon-cover-image_png}}" />
+
+  <!-- Facebook OG tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Dart packages" />
+  <meta property="og:title" content="{{& title}}" />
+  <meta property="og:description" content="{{& pageDescription}}" />
+  <meta property="og:image" content="{{& pub_site_root}}{{& static_assets.img__pub-dev-icon-cover-image_png}}" />
+  {{#share_url}}
+  <meta property="og:url" content="{{& share_url}}" />
+  {{/share_url}}
+
+  <title>{{& title}}</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:300,400,500|Google+Sans+Display:400|Roboto:300,400,500,700|Roboto+Mono:300,400,700" rel="stylesheet" />
+  <meta content="{{{static_assets.img__pub-dev-icon-cover-image_png}}}" />
+  {{#favicon}}
+  <link rel="shortcut icon" href="{{{favicon}}}" />
+  {{/favicon}}
+  <link rel="search" type="application/opensearchdescription+xml" title="Dart packages" href="{{{static_assets.osd_xml}}}" />
+  {{#canonicalUrl}}
+  <link rel="canonical" href="{{{canonicalUrl}}}"/>
+  {{/canonicalUrl}}
+  <meta name="description" content="{{& pageDescription}}" />
+  <link rel="alternate" type="application/atom+xml" title="Updated Packages Feed for Pub" href="/feed.atom" />
+  <link href="{{{static_assets.material__material-components-web_min_css}}}" rel="stylesheet" type="text/css" />
+  <link href="{{{static_assets.highlight__github_css}}}" rel="stylesheet" />
+  <link href="{{{static_assets.css__github-markdown_css}}}" rel="stylesheet" type="text/css" />
+  <link href="{{{static_assets.css__style_css}}}" rel="stylesheet" type="text/css" />
+  <script src="{{{static_assets.material__material-components-web_min_js}}}" defer="defer"></script>
+  <script src="{{{static_assets.js__script_dart_js}}}" defer="defer"></script>
+  {{#include_survey}}
+  <script async="async" defer="defer" src="//www.google.com/insights/consumersurveys/async_survey?site=5wdvu4vc5lhop3xbatxof6lzcm"></script>
+  {{/include_survey}}
+  <meta name="google-signin-client_id" content="{{oauth_client_id}}" />
+  <script src="https://apis.google.com/js/platform.js?onload=pubAuthInit" defer="defer"></script>
+  {{#page_data_encoded}}
+  <meta name="pub-page-data" content="{{& page_data_encoded}}"/>
+  {{/page_data_encoded}}
+</head>
+<body class="{{& body_class}}">
+{{& site_header_html}}
+
+{{#show_search_banner}}
+<div class="_banner-bg">
+  <div class="container{{#is_landing}} home-banner{{/is_landing}}">
+
+  {{#is_landing}}
+    <h2 class="_visuallyhidden">pub.dev package manager</h2>
+    <img class="logo" src="{{{static_assets.img__pub-dev-logo_svg}}}" alt="pub.dev package manager" />
+  {{/is_landing}}
+
+  {{& search_banner_html}}
+
+  {{#is_landing}}
+    {{& landing_blurb_html }}
+  {{/is_landing}}
+  </div>
+</div>
+{{/show_search_banner}}
+
+<main class="{{main_class}}">
+{{& content_html}}
+</main>
+
+<footer class="site-footer">
+  <a class="link" href="{{& dart_site_root}}/">Dart language</a>
+  <a class="link sep" href="/policy">Policy</a>
+  <a class="link sep" href="https://www.google.com/intl/en/policies/terms/">Terms</a>
+  <a class="link sep" href="/security">Security</a>
+  <a class="link sep" href="https://www.google.com/intl/en/policies/privacy/">Privacy</a>
+  <a class="link sep" href="/help">Help</a>
+  <a class="link sep icon" href="/feed.atom">
+    <img src="{{{static_assets.img__rss-feed-icon_svg}}}" class="inline-icon" alt="RSS/atom feed" title="RSS/atom feed"/>
+  </a>
+  <a class="link icon github_issue" href="https://github.com/dart-lang/pub-dev/issues/new">
+    <img src="{{{static_assets.img__bug-report-white-96px_png}}}" class="inline-icon" alt="Report an issue with this site" title="Report an issue with this site"/>
+  </a>
+</footer>
+{{#include_highlight}}
+<script src="{{{static_assets.highlight__highlight_pack_js}}}"></script>
+<script src="{{{static_assets.highlight__init_js}}}"></script>
+{{/include_highlight}}
+{{#schema_org_searchaction_json}}
+<script type="application/ld+json">
+{{& schema_org_searchaction_json}}
+</script>
+{{/schema_org_searchaction_json}}
+</body>
+</html>

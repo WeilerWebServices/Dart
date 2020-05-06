@@ -1,0 +1,14 @@
+name: pub_dartdoc
+author: Dart Team <misc@dartlang.org>
+description: The customized dartdoc for pub.dartlang.org.
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+dependencies:
+  path: ^1.6.0
+  pub_dartdoc_data:
+    path: ../pub_dartdoc_data
+  # dartdoc version to be pinned, keep in-sync with app/lib/shared/versions.dart
+  dartdoc: 0.31.0
+
+dev_dependencies:
+  test: '^1.3.0'

@@ -1,0 +1,39 @@
+language: dart
+sudo: false
+dart:
+  - stable
+  - "dev/raw/latest"
+env:
+  - DARTDOC_BOT=main
+  - DARTDOC_BOT=flutter
+  - DARTDOC_BOT=sdk-analyzer
+  - DARTDOC_BOT=packages
+  - DARTDOC_BOT=sdk-docs
+script: ./tool/travis.sh
+
+os:
+  - linux
+
+matrix:
+  include:
+  - env: DARTDOC_BOT=main
+    os: osx
+    dart: "dev/raw/latest"
+
+install:
+- ./tool/install_travis.sh
+
+before_script:
+- pub get
+
+before_install:
+  # Disable non-blocking I/O for stdout, stderr https://github.com/travis-ci/travis-ci/issues/4704#issuecomment-348435959
+  - python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+  - python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stderr, fcntl.F_GETFL); fcntl.fcntl(sys.stderr, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+
+branches:
+  only: [master]
+cache:
+  directories:
+  - $HOME/.pub-cache
+  - $HOME/.dartdoc_grinder

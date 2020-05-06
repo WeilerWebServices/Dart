@@ -1,0 +1,12 @@
+# This is not a real package, and is only used to add dev dependencies.
+#
+# For example, now its possible at the root of this package, to execute:
+#   pub run dev:<command>
+name: repository
+
+environment:
+  sdk: ">=2.5.0-dev.1.0 <3.0.0"
+
+dev_dependencies:
+  dev:
+    path: dev
